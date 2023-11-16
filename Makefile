@@ -25,7 +25,7 @@ OBJS        = \
 				sym.o \
 				rsrc.o \
 				src/imports.o \
-				src/background-processes-fix.o \
+				src/processes-fix.o \
 				src/start.o
 
 PETOOL     ?= petool
