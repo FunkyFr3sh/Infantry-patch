@@ -16,7 +16,7 @@ extern "C" {
 
 // ### Functions ###
 
-void app_start();
+void inf_start();
 
 
 #ifdef __cplusplus

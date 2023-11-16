@@ -1,12 +1,12 @@
 #include <windows.h>
 #include "macros/patch.h"
-#include "app.h"
+#include "infantry.h"
 #include "imports.h"
 
 // entry point
 void start()
 {
-    app_start();
+    inf_start();
 }
 
 // Required for c++ - You must hook WinMain here and make sure you also update the address for the real WinMain in sym.asm

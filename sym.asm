@@ -6,7 +6,7 @@
 
 ; functions
 
-setcglob 0x004C58BE, app_start
+setcglob 0x004C58BE, inf_start
 setcglob 0x004017F8, WinMain
 
 ; imports
