@@ -26,6 +26,7 @@ OBJS        = \
 				rsrc.o \
 				src/imports.o \
 				src/processes-fix.o \
+				src/remove-windowed.o \
 				src/start.o
 
 PETOOL     ?= petool
