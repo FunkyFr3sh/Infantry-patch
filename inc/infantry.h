@@ -1,5 +1,5 @@
-#ifndef APP_H 
-#define APP_H
+#ifndef INFANTRY_H 
+#define INFANTRY_H
 
 #ifdef __cplusplus
 extern "C" {
