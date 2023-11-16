@@ -7,18 +7,18 @@
 
 // Fixes a crash that happens when entering a zone (Caused by too many background processes)
 
-std::set<std::string> BackgroundProcesses;
+std::set<std::string> ProcessList;
 
 // Make sure each process name is only returned once
 BOOL WINAPI fake_Process32Next(HANDLE hSnapshot, LPPROCESSENTRY32 lppe)
 {
     BOOL result;
 
-    while ((result = Process32Next(hSnapshot, lppe)) && BackgroundProcesses.find(lppe->szExeFile) != BackgroundProcesses.end());
+    while ((result = Process32Next(hSnapshot, lppe)) && ProcessList.find(lppe->szExeFile) != ProcessList.end());
 
     if (result)
     {
-        BackgroundProcesses.insert(lppe->szExeFile);
+        ProcessList.insert(lppe->szExeFile);
     }
 
     return result;
@@ -32,7 +32,7 @@ EXTERN_C FARPROC WINAPI fake_GetProcAddress(HMODULE hModule, LPCSTR lpProcName)
 {
     if (strcmp(lpProcName, "Process32Next") == 0)
     {
-        BackgroundProcesses.clear();
+        ProcessList.clear();
         return (FARPROC)fake_Process32Next;
     }
 
