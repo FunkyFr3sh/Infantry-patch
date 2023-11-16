@@ -14,12 +14,7 @@ BOOL WINAPI fake_Process32Next(HANDLE hSnapshot, LPPROCESSENTRY32 lppe)
 {
     BOOL result;
 
-    while ((result = Process32Next(hSnapshot, lppe)) && ProcessList.find(lppe->szExeFile) != ProcessList.end());
-
-    if (result)
-    {
-        ProcessList.insert(lppe->szExeFile);
-    }
+    while ((result = Process32Next(hSnapshot, lppe)) && !ProcessList.insert(lppe->szExeFile).second);
 
     return result;
 }
