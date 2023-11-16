@@ -20,9 +20,8 @@ BOOL WINAPI fake_Process32Next(HANDLE hSnapshot, LPPROCESSENTRY32 lppe)
 }
 
 // Hook GetProcAddress so we can redirect the real Process32Next to ours
-SETBYTE(0x0042A2C6, 0xBD);
-SETDWORD(0x0042A2C6 + 1, _fake_GetProcAddress);
-SETBYTE(0x0042A2C6 + 5, 0x90);
+SETWORD(0x0042A2C6, 0xBD90);
+SETDWORD(0x0042A2C6 + 2, _fake_GetProcAddress);
 EXTERN_C FARPROC WINAPI fake_GetProcAddress(HMODULE hModule, LPCSTR lpProcName)
 {
     if (strcmp(lpProcName, "Process32Next") == 0)
